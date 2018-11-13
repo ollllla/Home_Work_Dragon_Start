@@ -10,11 +10,11 @@ def split(lst, start, end):
     splitter = lst[end]
 
     for j in range(start, end):
-        if lst[j] <= splitter:
+        if lst[j] >= splitter:
             i = i + 1
             lst[i], lst[j] = lst[j], lst[i]
-        lst[i+1], lst[end] = lst[end], lst[i+1]
-        return i + 1
+    lst[i+1], lst[end] = lst[end], lst[i+1]
+    return i + 1
 
 
 def quick_sort(lst, start, end):
@@ -23,7 +23,7 @@ def quick_sort(lst, start, end):
     This is iterative implementation of quick sort algorithm
     """
 
-    if start > end:
+    if start < end:
         s = split(lst, start, end)
         quick_sort(lst, start, s - 1)
         quick_sort(lst, s + 1, end)
